@@ -1,3 +1,5 @@
-# The book library is a SPA application created on native Javascript
+## Book library
 
-# Stack: Javascript, npm, rollup, eslint
+The book library is a SPA application created on native Javascript
+
+Stack: Javascript, npm, rollup, eslint
