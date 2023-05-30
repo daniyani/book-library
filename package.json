@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "live-server",
+    "build": "rollup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/daniyani/book-library/issues"
   },
-  "homepage": "https://github.com/daniyani/book-library#readme"
+  "homepage": "https://github.com/daniyani/book-library#readme",
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "rollup": "^3.23.0"
+  }
 }
