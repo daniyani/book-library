@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "live-server",
-    "build": "rollup",
+    "build": "rollup -c --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +21,8 @@
   },
   "homepage": "https://github.com/daniyani/book-library#readme",
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.2",
     "eslint": "^8.41.0",
-    "rollup": "^3.23.0"
+    "rollup-plugin-import-css": "^3.2.1"
   }
 }
