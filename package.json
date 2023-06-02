@@ -24,5 +24,8 @@
     "@rollup/plugin-node-resolve": "^15.0.2",
     "eslint": "^8.41.0",
     "rollup-plugin-import-css": "^3.2.1"
+  },
+  "dependencies": {
+    "on-change": "^4.0.2"
   }
 }
