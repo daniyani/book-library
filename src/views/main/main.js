@@ -8,6 +8,7 @@ export class MainView extends AbstractView {
 
     state = {
         list: [],
+        numFound: 0,
         isLoading: false,
         searchQuery: undefined,
         offset: 0
@@ -36,6 +37,7 @@ export class MainView extends AbstractView {
             this.render()
             const data = await this.loadList(this.state.searchQuery, this.state.offset)
             this.state.isLoading = false;
+            this.state.numFound = data.numFound;
             this.state.list = data.docs;
             this.render()
         }
