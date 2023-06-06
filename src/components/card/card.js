@@ -8,9 +8,23 @@ export class Card extends DivComponent {
         this.cardItem = cardItem
     }
 
+    #addToFavorites(e) {
+        if(e.target.closest('.button__add')) {
+            this.appState.favorites.push(this.cardItem)
+        }
+    }
+
+    #deleteFromFavorites(e) {
+        if(e.target.closest('.button__add')) {
+            this.appState.favorites = this.appState.favorites.filter(book => book.key !== this.cardItem.key)
+        }
+    }
+
     render() {
         const isFavorite = this.appState.favorites.find(book => book.key === this.cardItem.key)
+
         this.el.classList.add('card')
+
         this.el.innerHTML = `
             <div class="card__img">
                 <img src="https://covers.openlibrary.org/b/olid/${this.cardItem.cover_edition_key}-M.jpg" alt="Book cover"/>
@@ -32,6 +46,13 @@ export class Card extends DivComponent {
                 </div>
             </div>
         `
+
+        if(isFavorite) {
+            this.el.addEventListener('click', this.#deleteFromFavorites.bind(this)) 
+        } else {
+            this.el.addEventListener('click', this.#addToFavorites.bind(this)) 
+        }
+
 
         return this.el
     }

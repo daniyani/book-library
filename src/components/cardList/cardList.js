@@ -16,7 +16,6 @@ export class CardList extends DivComponent {
             : `<h2 class="cardList__title">Найдено книг - ${this.state.numFound}</h2>`;
 
         for (const card of this.state.list) {
-            console.log(card);
             this.el.append(new Card(this.appState, card).render())
         }    
     

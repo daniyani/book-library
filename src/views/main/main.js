@@ -23,7 +23,9 @@ export class MainView extends AbstractView {
     }
 
     appStateHook(path) {
-        console.log(path);
+        if(path === 'favorites') {
+            this.render()
+        }
     }
 
     async loadList(value, offset) {
