@@ -1,0 +1,18 @@
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+.pagination__prev {
+    cursor: pointer;
+}
+
+.pagination__prev_hidden {
+    visibility: hidden;
+}
+
+.pagination__next {
+    cursor: pointer;
+}

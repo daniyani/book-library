@@ -3,15 +3,18 @@ import onChange from "on-change";
 import { Header } from "../../components/header/header.js";
 import { Search } from "../../components/search/search.js";
 import { CardList } from "../../components/cardList/cardList.js";
+import { Pagination } from "../../components/pagination/pagination.js";
 
 export class MainView extends AbstractView {
+
+    #limit = 12;
 
     state = {
         list: [],
         numFound: 0,
         isLoading: false,
         searchQuery: undefined,
-        offset: 0
+        offset: 0,
     }
      
     constructor(appState) {
@@ -34,12 +37,12 @@ export class MainView extends AbstractView {
     }
 
     async loadList(value, offset) {
-        const response = await fetch(`https://openlibrary.org/search.json?q=${value}&offset=${offset}`);
+        const response = await fetch(`https://openlibrary.org/search.json?q=${value}&offset=${offset}&limit=12`);
         return response.json()
     }
 
     async stateHook(path) {
-        if(path === 'searchQuery') {
+        if(path === 'searchQuery' || path === 'offset') {
             this.state.isLoading = true;
             this.render()
             const data = await this.loadList(this.state.searchQuery, this.state.offset)
@@ -55,6 +58,11 @@ export class MainView extends AbstractView {
         main.innerHTML = ` <h2>Books found - ${this.state.numFound}</h2>`
         main.append(new Search(this.state).render())
         main.append(new CardList(this.state, this.appState).render())
+
+        if(this.state.numFound > this.#limit && !this.state.isLoading) {
+            main.append(new Pagination(this.state).render())
+        }
+        
         this.app.innerHTML = '';
         this.renderHeader();
         this.app.append(main);

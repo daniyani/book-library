@@ -41,7 +41,6 @@ export class FavoritesView extends AbstractView {
 
     emptyList() {
         const element = document.createElement('div');
-        element.classList.add('empty__list');
         element.style.textAlign = 'center';
         element.innerHTML = "No favorite books";
         
