@@ -10,9 +10,11 @@ export class CardList extends DivComponent {
     }
 
     render() {
-        this.el.innerHTML = this.state.isLoading ? `
-            <div class="cardList__loading">Please wait...</div>` 
-            : `<h2 class="cardList__title">Найдено книг - ${this.state.numFound}</h2>`;
+        if(this.state.isLoading) {
+            this.el.innerHTML = "<div class='cardList__loading'>Please wait...</div>"
+
+            return this.el
+        }
 
         const cardGrid = document.createElement('div')
         cardGrid.classList.add('card__grid')
